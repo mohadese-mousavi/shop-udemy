@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/shop-udemy/static/css/main.b5d5b2e5.chunk.css",
+    "main.js": "/shop-udemy/static/js/main.8198727b.chunk.js",
+    "main.js.map": "/shop-udemy/static/js/main.8198727b.chunk.js.map",
+    "runtime-main.js": "/shop-udemy/static/js/runtime-main.1037f528.js",
+    "runtime-main.js.map": "/shop-udemy/static/js/runtime-main.1037f528.js.map",
+    "static/js/2.739c423e.chunk.js": "/shop-udemy/static/js/2.739c423e.chunk.js",
+    "static/js/2.739c423e.chunk.js.map": "/shop-udemy/static/js/2.739c423e.chunk.js.map",
+    "index.html": "/shop-udemy/index.html",
+    "static/css/main.b5d5b2e5.chunk.css.map": "/shop-udemy/static/css/main.b5d5b2e5.chunk.css.map",
+    "static/js/2.739c423e.chunk.js.LICENSE.txt": "/shop-udemy/static/js/2.739c423e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1037f528.js",
+    "static/js/2.739c423e.chunk.js",
+    "static/css/main.b5d5b2e5.chunk.css",
+    "static/js/main.8198727b.chunk.js"
+  ]
+}

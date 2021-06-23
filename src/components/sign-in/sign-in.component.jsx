@@ -1,11 +1,15 @@
 import React from 'react';
 import './sign-in.style.scss';
-import CustomButton from '../custom-button/custom-button.component'
-import FormInput from '../form-input/form-input.component'
+import CustomButton from '../custom-button/custom-button.component';
+import FormInput from '../form-input/form-input.component';
+import {signInWithGoogle} from '../../firebase/firebase.utils';
+// import {withRouter} from 'react-router-dom'
+
+
 
 class SignIn extends React.Component {
-    constructor(){
-        super()
+    constructor({history,match}){
+        super({history,match});
         this.state={
             email : '' ,
             password : ''
@@ -21,6 +25,10 @@ class SignIn extends React.Component {
         const {value,name} = event.target;
         this.setState({ [name]:value });
     }
+
+    // handleGoogleSignin = () => {
+    //     signInWithGoogle().then(()=>this.history.push(` ${this.match.url}'/' `));
+    // }
 
 
     render(){
@@ -48,7 +56,10 @@ class SignIn extends React.Component {
                         value={this.state.password} 
                         required/>
 
-                    <CustomButton type="submit">Submit form</CustomButton>
+                    <div className="buttons">
+                        <CustomButton type="submit">Submit form</CustomButton>
+                        <CustomButton isGoogleButton onClick={signInWithGoogle}>{''}Sign in with Google{''}</CustomButton>
+                    </div>
                 </form>
             </div>
         )

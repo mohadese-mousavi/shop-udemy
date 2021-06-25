@@ -8,8 +8,8 @@ import {signInWithGoogle} from '../../firebase/firebase.utils';
 
 
 class SignIn extends React.Component {
-    constructor({history,match}){
-        super({history,match});
+    constructor(){
+        super();
         this.state={
             email : '' ,
             password : ''

@@ -2,8 +2,8 @@ import React from 'react';
 import './sign-in.style.scss';
 import CustomButton from '../custom-button/custom-button.component';
 import FormInput from '../form-input/form-input.component';
-import {signInWithGoogle} from '../../firebase/firebase.utils';
-// import {withRouter} from 'react-router-dom'
+import {auth, signInWithGoogle} from '../../firebase/firebase.utils';
+import {Redirect} from 'react-router-dom'
 
 
 
@@ -12,13 +12,26 @@ class SignIn extends React.Component {
         super();
         this.state={
             email : '' ,
-            password : ''
+            password : '',
+            isSignIn:false
         }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit =async event => {
         event.preventDefault();
-        this.setState({email : '' ,password : ''})
+        const {email,password} = this.state;
+        try{
+           await auth.signInWithEmailAndPassword(email,password);
+           this.setState({
+            email : '' ,
+            password : ''
+        })
+        
+        }catch(e){
+            console.log(e.message);
+        }
+
+        this.setState({email : '' ,password : '',isSignIn:true});
     }
 
     handleChange = (event) => {
@@ -26,12 +39,13 @@ class SignIn extends React.Component {
         this.setState({ [name]:value });
     }
 
-    // handleGoogleSignin = () => {
-    //     signInWithGoogle().then(()=>this.history.push(` ${this.match.url}'/' `));
-    // }
-
-
+    
     render(){
+        const {isSignIn}=this.state;
+        if (isSignIn) {
+            return <Redirect to="/" />
+        }
+
         return(
             <div className="sign-in">
                 <h2 className='title'>I already have an acount</h2>
@@ -61,6 +75,7 @@ class SignIn extends React.Component {
                         <CustomButton isGoogleButton onClick={signInWithGoogle}>{''}Sign in with Google{''}</CustomButton>
                     </div>
                 </form>
+
             </div>
         )
     }

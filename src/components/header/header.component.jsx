@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils'
 import {connect} from 'react-redux'
 
+
 const Header = ({currentUser}) => (
+   
     <div className="header">
+       
         <Link className="logo-container" to='/'>
             <Logo className="logo"/>
         </Link>
@@ -15,15 +18,17 @@ const Header = ({currentUser}) => (
             <Link className="option" to="/shop">CONTACT</Link>
             {
                 currentUser ?
-                <div className="option" onClick={()=> auth.signOut() }>SIGN OUT</div>
+                (<div className="option" onClick={ ()=> auth.signOut()}>SIGN OUT</div> )
                 :
-                <Link className="option" to='/signin'>SIGN IN</Link>
+                (<Link className="option" to='/signin' onClick={()=> console.error(`user signed out!!!`) }>SIGN IN</Link>)
             }
         </div>
     </div>
 )
+
+
 // get states from root-reducer in redux
-const mapStateToProps= state =>({
-    currentUser: state.user.currentUser
+const mapStateToProps= ({user}) =>({
+    currentUser: user.currentUser
 })
 export default connect(mapStateToProps)(Header);

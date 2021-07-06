@@ -2,11 +2,13 @@ import React from 'react';
 import './header.style.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { Link } from 'react-router-dom';
-import {auth} from '../../firebase/firebase.utils'
-import {connect} from 'react-redux'
+import {auth} from '../../firebase/firebase.utils';
+import {connect} from 'react-redux';
+import CardIcon from '../card-icon/card-icon.component'
+import CardDropDown from '../card-dropdown/card-dropdown.component'
 
 
-const Header = ({currentUser}) => (
+const Header = ({currentUser , hidden}) => (
    
     <div className="header">
        
@@ -22,13 +24,19 @@ const Header = ({currentUser}) => (
                 :
                 (<Link className="option" to='/signin' onClick={()=> console.error(`user signed out!!!`) }>SIGN IN</Link>)
             }
+
+            <CardIcon/>
         </div>
+
+        { hidden? null : <CardDropDown/> }
+
     </div>
 )
 
 
 // get states from root-reducer in redux
-const mapStateToProps= ({user}) =>({
-    currentUser: user.currentUser
+const mapStateToProps= ({ user : {currentUser} , card: {hidden} }) =>({
+    currentUser,
+    hidden
 })
 export default connect(mapStateToProps)(Header);

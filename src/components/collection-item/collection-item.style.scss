@@ -5,10 +5,18 @@
     height: 350px;
     align-items: center;
     overflow: hidden;
+    position: relative;
     &:hover {
         cursor: pointer;
-        & .image {
+        .image {
             transform: scale(1.1);
+            opacity: .8;
+        }
+        .custom-button {
+            position: absolute;
+            width: 80%;
+            top: 225px;
+            display: block;
         }
     }
     .image {
@@ -23,7 +31,7 @@
     .collection-footer {
         width: 100%;
         background-color: #fff;
-        height: 5%;
+        height: 15%;
         display: flex;
         justify-content: space-between;
         font-size: 18px;
@@ -36,5 +44,11 @@
         .price {
             width: 10%;
         }
+    }
+    .custom-button {
+        position: absolute;
+        width: 80%;
+        top: 225px;
+        display: none;
     }
 }

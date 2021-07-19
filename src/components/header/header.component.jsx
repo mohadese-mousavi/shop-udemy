@@ -1,14 +1,14 @@
 import React from 'react';
 import './header.style.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
+import  CardIcon  from '../card-icon/card-icon.component';
+import  CardDropDown  from '../card-dropdown/card-dropdown.component';
 import { Link } from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils';
 import {connect} from 'react-redux';
-import CardIcon from '../card-icon/card-icon.component'
-import CardDropDown from '../card-dropdown/card-dropdown.component'
 
 
-const Header = ({currentUser , hidden}) => (
+const Header = ({currentUser,hidden}) => (
    
     <div className="header">
        
@@ -28,14 +28,17 @@ const Header = ({currentUser , hidden}) => (
             <CardIcon/>
         </div>
 
-        { hidden? null : <CardDropDown/> }
+            {
+                hidden?null:
+                <CardDropDown/>
 
+            }
     </div>
 )
 
 
 // get states from root-reducer in redux
-const mapStateToProps= ({ user : {currentUser} , card: {hidden} }) =>({
+const mapStateToProps= ({card:{hidden},user:{currentUser}}) =>({
     currentUser,
     hidden
 })
